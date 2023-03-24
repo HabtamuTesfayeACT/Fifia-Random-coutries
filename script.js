@@ -1,8 +1,8 @@
 var countryname = [];
-var l1 = []
-var l2 = []
-var l3 = []
-var l4 = []
+var l1 = new Array(4);
+var l2 = new Array(4);
+var l3 = new Array(4);
+var l4 = new Array(4);
 var inputs = new Array(4);
 
 const apiUrl = 'https://restcountries.com/v2/all';
@@ -32,7 +32,7 @@ async function lists() {
 }
 
 const forms = document.getElementsByTagName("form");
-function assignValues() {
+async function assignValues() {
 let index = 0;
 //getting a number 1 -16
 var numbers = [];
@@ -46,8 +46,8 @@ for (var i = numbers.length - 1; i > 0; i--) {
     numbers[i] = numbers[j];
     numbers[j] = temp;
 }
+console.log(l1);
     // Loop through the form
-    let h=0;
     for (let i = 0; i < forms.length; i++) {
         // Get the label elements in the form
         const labels = forms[i].getElementsByTagName("label");
@@ -57,22 +57,22 @@ for (var i = numbers.length - 1; i > 0; i--) {
              labels[j].innerHTML = countryname[numbers[index]];
              index++;
             if (i == 0) {
-                l1.push(labels[j].innerHTML);
+                l1[j]= labels[j].innerHTML;
             }
             if (i == 1) {
-                l2.push(labels[j].innerHTML);
+                l2[j]= labels[j].innerHTML;
             }
             if (i == 2) {
-                l3.push(labels[j].innerHTML);
+                l3[j]= labels[j].innerHTML;
             }
             if (i == 3) {
-                l4.push(labels[j].innerHTML);
+                l4[j]= labels[j].innerHTML;
             }
         }
     }
 }
 
-function getValue() {
+async function getValue() {
     // Get the form element
     const form = document.getElementById("RegForm");
     // Get the value of the input field
